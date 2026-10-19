@@ -126,6 +126,10 @@ def _clients():
         from qdrant_client import QdrantClient
         base_url = os.environ.get("OPENAI_API_BASE") or os.environ.get("OPENAI_BASE_URL")
         _oai = OpenAI(base_url=base_url) if base_url else OpenAI()
+        # The brief pins qdrant-client <1.16; Qdrant Cloud now runs 1.19, so the client warns
+        # on every start. The REST calls used here (query_points, upsert, ...) work fine.
+        import warnings
+        warnings.filterwarnings("ignore", message="Qdrant client version")
         _qdrant = QdrantClient(url=os.environ["QDRANT_URL"], api_key=os.environ.get("QDRANT_API_KEY"),
                                timeout=int(os.environ.get("QDRANT_TIMEOUT", "30")))
     except Exception as e:
