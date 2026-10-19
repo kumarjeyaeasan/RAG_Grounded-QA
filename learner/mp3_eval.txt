@@ -1,0 +1,36 @@
+  Config: threshold=0.50 (top dense cosine) · top_k=7 · hybrid BM25+dense RRF (1.5/1.0), same-story · chunks 600/150 · gpt-4o-mini + text-embedding-3-small
+
+  id                              type     hit   abstained  grounded  ok
+  --------------------------------------------------------------------------
+  q1_red_headed_league_assistant  answer   ✓     ✗          ✓         ✓
+  q2_speckled_band_weapon         answer   ✓     ✗          ✓         ✓
+  q3_scandal_bohemia_adler        answer   ✓     ✗          ✓         ✓
+  q4_engineers_thumb_press        answer   ✓     ✗          ✓         ✓
+  abstain_moriarty                abstain  —     ✓          —         ✓
+  abstain_out_of_domain           abstain  —     ✓          —         ✓
+  q5_carbuncle_wrong_arrest       answer   ✓     ✗          ✓         ✓
+  q6_bohemia_two_disguises        answer   ✓     ✗          ✓         ✓
+  q7_abstain_toby_dog             abstain  —     ✓          —         ✓
+  --------------------------------------------------------------------------
+
+  Retrieval hit rate    : 1.00   (6 answerable questions)
+  Grounded & cited rate : 1.00   (KPI: grounded response rate)
+  Abstention accuracy   : 1.00   (3 should-abstain questions)
+  Hallucination rate    : 0.00   (KPI: hallucination rate)
+
+  Diagnostics
+  --------------------------------------------------------------------------
+  id                              top cos  facts  cited / why abstained
+  --------------------------------------------------------------------------
+  q1_red_headed_league_assistant  0.689    1/2    01_red_headed_league.txt
+  q2_speckled_band_weapon         0.547    1/2    02_speckled_band.txt
+  q3_scandal_bohemia_adler        0.653    2/2    05_scandal_in_bohemia.txt
+  q4_engineers_thumb_press        0.572    2/2    04_engineers_thumb.txt
+  abstain_moriarty                0.468    —      abstained (score gate)
+  abstain_out_of_domain           0.157    —      abstained (score gate)
+  q5_carbuncle_wrong_arrest       0.602    2/2    03_blue_carbuncle.txt
+  q6_bohemia_two_disguises        0.540    3/3    05_scandal_in_bohemia.txt
+  q7_abstain_toby_dog             0.449    —      abstained (score gate)
+  --------------------------------------------------------------------------
+  False-abstention rate : 0.00   (answerable questions wrongly refused)
+

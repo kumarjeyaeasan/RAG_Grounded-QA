@@ -1,0 +1,11 @@
+# secrets — real, live keys. Never commit.
+.env
+**/.env
+
+# local environment + API-response cache
+.venv/
+**/.venv/
+.cache/
+**/.cache/
+__pycache__/
+*.pyc

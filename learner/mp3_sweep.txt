@@ -1,0 +1,25 @@
+  Config: threshold=SWEPT (top dense cosine) · top_k=7 · hybrid BM25+dense RRF (1.5/1.0), same-story · chunks 600/150 · gpt-4o-mini + text-embedding-3-small
+
+  thresh  hit rate  grounded  abst.acc  halluc.  false-abst
+  ----------------------------------------------------------
+  0.20    1.00      1.00      1.00      0.00     0.00
+  0.30    1.00      1.00      1.00      0.00     0.00
+  0.40    1.00      1.00      1.00      0.00     0.00
+  0.45    1.00      1.00      1.00      0.00     0.00
+  0.47    1.00      1.00      1.00      0.00     0.00
+  0.50    1.00      1.00      1.00      0.00     0.00
+  0.52    1.00      1.00      1.00      0.00     0.00
+  0.55    1.00      0.67      1.00      0.00     0.33
+  0.60    1.00      0.50      1.00      0.00     0.50
+
+  Top dense cosine per question (what the gate compares against):
+    answer   0.689  q1_red_headed_league_assistant
+    answer   0.547  q2_speckled_band_weapon
+    answer   0.653  q3_scandal_bohemia_adler
+    answer   0.572  q4_engineers_thumb_press
+    abstain  0.468  abstain_moriarty  (LLM refused on its own)
+    abstain  0.157  abstain_out_of_domain  (LLM refused on its own)
+    answer   0.602  q5_carbuncle_wrong_arrest
+    answer   0.540  q6_bohemia_two_disguises
+    abstain  0.449  q7_abstain_toby_dog  (LLM refused on its own)
+
